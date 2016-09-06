@@ -23,17 +23,19 @@ public class upswipe extends newgesture {
 			for(Gesture gesture : frame.gestures()) {
 				if(gesture.type()==Type.TYPE_SWIPE) {
 					for(Hand hand : frame.hands()) {
-						switch(gesture.state()) {
-						case STATE_START:
-							if(start==false && swipedirection.direction(hand)==swipedirection.up)
-								start = true;
-							break;
-						case STATE_STOP:
-							if(start) {
-								start = false;
-								return true;
+						if(hand.palmNormal().roll()>2 || hand.palmNormal().roll()<-2) {
+							switch(gesture.state()) {
+							case STATE_START:
+								if(start==false && swipedirection.direction(hand)==swipedirection.up)
+									start = true;
+								break;
+							case STATE_STOP:
+								if(start) {
+									start = false;
+									return true;
+								}
+								break;
 							}
-							break;
 						}
 					}
 				}

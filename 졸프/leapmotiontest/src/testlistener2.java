@@ -34,7 +34,7 @@ public class testlistener2 extends Listener {
     	Frame frame = controller.frame();
     	
     	for(Hand hand : frame.hands()) {
-    		if(hand.isLeft() && hand.grabAngle()>3 /*&& (hand.palmNormal().roll()>2 || hand.palmNormal().roll()<-2)*/) {
+    		if(hand.isLeft() && hand.grabAngle()>3 && (hand.palmNormal().roll()>2 || hand.palmNormal().roll()<-2)) {
     			rb.keyPress(KeyEvent.VK_CONTROL);
     			rb.keyPress(KeyEvent.VK_ESCAPE);
     			rb.keyRelease(KeyEvent.VK_ESCAPE);

@@ -8,7 +8,7 @@ import com.leapmotion.leap.*;
 public class testlistener5 extends Listener {
 	
 	Robot rb;
-	newgesture rs, ls, us, ds, ph, fi, cc;
+	newgesture rs, ls, us, ds, ph, fi, cc, p;
 	boolean click;
 	
 	public void onInit(Controller controller) {
@@ -36,6 +36,8 @@ public class testlistener5 extends Listener {
 		fi.setvalid(true);
 		cc = new clench();
 		cc.setvalid(true);
+		p = new handstogether();
+		p.setvalid(true);
 		click = false;
 		
 		System.out.println("Connected");
@@ -63,16 +65,18 @@ public class testlistener5 extends Listener {
     	}
     	
     	else if(us.isgesture(frame)) {
-    		rb.keyPress(KeyEvent.VK_DOWN);
-    		rb.keyRelease(KeyEvent.VK_DOWN);
+    		rb.keyPress(KeyEvent.VK_SHIFT);
+    		rb.keyPress(KeyEvent.VK_F5);
+    		rb.keyRelease(KeyEvent.VK_F5);
+    		rb.keyRelease(KeyEvent.VK_SHIFT);
     	}
     	
     	else if(ds.isgesture(frame)) {
-    		rb.keyPress(KeyEvent.VK_UP);
-    		rb.keyRelease(KeyEvent.VK_UP);
+    		rb.keyPress(KeyEvent.VK_ESCAPE);
+    		rb.keyRelease(KeyEvent.VK_ESCAPE);
     	}
     	
-    	else if(ph.isgesture(frame)) {
+/*    	else if(ph.isgesture(frame)) {
     		rb.mouseMove(coodinatetransform.transform_x(normalizepalmposition.getx(frame)), coodinatetransform.transform_y(normalizepalmposition.gety(frame)));
     		
     		if(fi.isgesture(frame) && click==false){
@@ -84,10 +88,17 @@ public class testlistener5 extends Listener {
     			rb.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
     		}
     	}
-    	
+*/    	
     	else if(cc.isgesture(frame)) {
-    		rb.keyPress(KeyEvent.VK_ENTER);
-    		rb.keyRelease(KeyEvent.VK_ENTER);
+    		rb.keyPress(KeyEvent.VK_CONTROL);
+    		rb.keyPress(KeyEvent.VK_Q);
+    		rb.keyRelease(KeyEvent.VK_Q);
+    		rb.keyRelease(KeyEvent.VK_CONTROL);
+    	}
+    	
+    	else if(p.isgesture(frame)) {
+    		rb.keyPress(KeyEvent.VK_F5);
+    		rb.keyRelease(KeyEvent.VK_F5);
     	}
     }
 }
